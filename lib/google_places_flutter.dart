@@ -205,7 +205,7 @@ class _GooglePlaceAutoCompleteTextFieldState
                       child: ListView.separated(
                     padding: EdgeInsets.zero,
                     shrinkWrap: true,
-                    itemCount: 5,
+                    itemCount: alPredictions.length,
                     separatorBuilder: (context, pos) =>
                         widget.seperatedBuilder ?? SizedBox(),
                     itemBuilder: (BuildContext context, int index) {
