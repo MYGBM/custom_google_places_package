@@ -186,6 +186,7 @@ class _GooglePlaceAutoCompleteTextFieldState
   textChanged(String text) async {
     getLocation(text);
   }
+//making some changes 
 
   OverlayEntry? _createOverlayEntry() {
     if (context != null && context.findRenderObject() != null) {
@@ -193,7 +194,8 @@ class _GooglePlaceAutoCompleteTextFieldState
       var size = renderBox.size;
       var offset = renderBox.localToGlobal(Offset.zero);
       return OverlayEntry(
-          builder: (context) => Positioned(
+          builder: (context) => 
+          Positioned(
                 left: offset.dx,
                 top: size.height + offset.dy,
                 width: size.width,
@@ -202,12 +204,14 @@ class _GooglePlaceAutoCompleteTextFieldState
                   link: this._layerLink,
                   offset: Offset(0.0, size.height + 5.0),
                   child: Material(
+                     child:Container(
+                      height:179,
                       child: ListView.separated(
                     padding: EdgeInsets.zero,
                     shrinkWrap: true,
                     itemCount: alPredictions.length,
                     separatorBuilder: (context, pos) =>
-                        widget.seperatedBuilder ?? SizedBox(),
+                    widget.seperatedBuilder ?? SizedBox(),
                     itemBuilder: (BuildContext context, int index) {
                       return InkWell(
                         onTap: () {
@@ -231,9 +235,10 @@ class _GooglePlaceAutoCompleteTextFieldState
                                 child: Text(alPredictions[index].description!)),
                       );
                     },
-                  )),
+                  )
+                  ),
                 ),
-              ));
+              )));
     }
   }
 
