@@ -186,7 +186,7 @@ class _GooglePlaceAutoCompleteTextFieldState
   textChanged(String text) async {
     getLocation(text);
   }
-//making some changes 
+//making some changes
 
   OverlayEntry? _createOverlayEntry() {
     if (context != null && context.findRenderObject() != null) {
@@ -194,51 +194,50 @@ class _GooglePlaceAutoCompleteTextFieldState
       var size = renderBox.size;
       var offset = renderBox.localToGlobal(Offset.zero);
       return OverlayEntry(
-          builder: (context) => 
-          Positioned(
-                left: offset.dx,
-                top: size.height + offset.dy,
-                width: size.width,
-                child: CompositedTransformFollower(
-                  showWhenUnlinked: false,
-                  link: this._layerLink,
-                  offset: Offset(0.0, size.height + 5.0),
-                  child: Material(
-                     child:Container(
-                      height:179,
+          builder: (context) => Positioned(
+              left: offset.dx,
+              top: size.height + offset.dy,
+              width: size.width,
+              child: CompositedTransformFollower(
+                showWhenUnlinked: false,
+                link: this._layerLink,
+                offset: Offset(0.0, size.height + 5.0),
+                child: Material(
+                  // child: Container(
+                  //     height: 179,
                       child: ListView.separated(
-                    padding: EdgeInsets.zero,
-                    shrinkWrap: true,
-                    itemCount: alPredictions.length,
-                    separatorBuilder: (context, pos) =>
-                    widget.seperatedBuilder ?? SizedBox(),
-                    itemBuilder: (BuildContext context, int index) {
-                      return InkWell(
-                        onTap: () {
-                          print("tapped");
-                          var selectedData = alPredictions[index];
-                          if (index < alPredictions.length) {
-                            // widget.itemClick!(selectedData);
-                            if (widget.isLatLngRequired) {
-                              getPlaceDetailsFromPlaceId(selectedData);
-                            }
-                            widget.itemClick!(selectedData);
+                        padding: EdgeInsets.zero,
+                        shrinkWrap: true,
+                        itemCount: alPredictions.length,
+                        separatorBuilder: (context, pos) =>
+                            widget.seperatedBuilder ?? SizedBox(),
+                        itemBuilder: (BuildContext context, int index) {
+                          return InkWell(
+                            onTap: () {
+                              print("tapped");
+                              var selectedData = alPredictions[index];
+                              if (index < alPredictions.length) {
+                                // widget.itemClick!(selectedData);
+                                if (widget.isLatLngRequired) {
+                                  getPlaceDetailsFromPlaceId(selectedData);
+                                }
+                                widget.itemClick!(selectedData);
 
-                            removeOverlay();
-                          }
+                                removeOverlay();
+                              }
+                            },
+                            child: widget.itemBuilder != null
+                                ? widget.itemBuilder!(
+                                    context, index, alPredictions[index])
+                                : Container(
+                                    padding: EdgeInsets.all(10),
+                                    child: Text(
+                                        alPredictions[index].description!)),
+                          );
                         },
-                        child: widget.itemBuilder != null
-                            ? widget.itemBuilder!(
-                                context, index, alPredictions[index])
-                            : Container(
-                                padding: EdgeInsets.all(10),
-                                child: Text(alPredictions[index].description!)),
-                      );
-                    },
-                  )
-                  ),
+                      )),
                 ),
-              )));
+              ));
     }
   }
 
