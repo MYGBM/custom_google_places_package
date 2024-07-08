@@ -259,7 +259,7 @@ class _GooglePlaceAutoCompleteTextFieldState
 
     var url =
         "http://64.226.68.114:8070/api/map/placeDetails?placeid=${prediction.placeId}";
-    // print("place iddd ${prediction.placeId}");
+    print("place iddd ${prediction.placeId}");
     try {
       Response response = await _dio.get(
         url,
