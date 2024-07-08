@@ -4,11 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_places_flutter/model/place_details.dart';
 import 'package:google_places_flutter/model/prediction.dart';
-
 import 'package:rxdart/subjects.dart';
 import 'package:dio/dio.dart';
 import 'package:rxdart/rxdart.dart';
-
 import 'DioErrorHandler.dart';
 
 class GooglePlaceAutoCompleteTextField extends StatefulWidget {
@@ -117,7 +115,7 @@ class _GooglePlaceAutoCompleteTextFieldState
 
   getLocation(String test) async {
     String apiURL =
-        "https://admin.e2store.net/api/map/autocomplete?search=$test";
+        "http://64.226.68.114:8070/api/map/autocomplete?search=$test";
 
     if (widget.countries != null) {
       for (int i = 0; i < widget.countries!.length; i++) {
@@ -257,7 +255,7 @@ class _GooglePlaceAutoCompleteTextFieldState
     //String key = GlobalConfiguration().getString('google_maps_key');
 
     var url =
-        "https://admin.e2store.net/api/map/placeDetails?placeid=${prediction.placeId}";
+        "http://64.226.68.114:8070/api/map/placeDetails?placeid=${prediction.placeId}";
     print("place iddd ${prediction.placeId}");
     try {
       Response response = await _dio.get(
