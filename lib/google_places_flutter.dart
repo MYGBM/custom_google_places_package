@@ -1,5 +1,4 @@
 library google_places_flutter;
-
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -203,9 +202,13 @@ class _GooglePlaceAutoCompleteTextFieldState
                 link: this._layerLink,
                 offset: Offset(0.0, size.height + 5.0),
                 child: Material(
-                  // child: Container(
-                  //     height: 179,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Colors.grey, width: 0.6), // Add a border
+                      borderRadius: BorderRadius.circular(8.0), // Optional: rounded corners
+                    ),
                       child: ListView.separated(
+                        scrollDirection: Axis.vertical,
                         padding: EdgeInsets.zero,
                         shrinkWrap: true,
                         itemCount: alPredictions.length,
@@ -237,7 +240,7 @@ class _GooglePlaceAutoCompleteTextFieldState
                         },
                       )),
                 ),
-              ));
+              )));
     }
   }
 
@@ -333,3 +336,4 @@ typedef GetPlaceDetailswWithLatLng = void Function(
 
 typedef ListItemBuilder = Widget Function(
     BuildContext context, int index, Prediction prediction);
+

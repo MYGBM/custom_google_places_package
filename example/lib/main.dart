@@ -78,7 +78,8 @@ class _MyHomePageState extends State<MyHomePage> {
           enabledBorder: InputBorder.none,
         ),
         debounceTime: 400,
-        countries: ["in", "fr"],
+        //TODO: set the country to Ethiopia
+        countries: ["ET"],
         isLatLngRequired: true,
         getPlaceDetailWithLatLng: (Prediction prediction) {
           print("placeDetails" + prediction.lat.toString());
