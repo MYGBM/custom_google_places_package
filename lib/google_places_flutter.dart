@@ -117,7 +117,7 @@ class _GooglePlaceAutoCompleteTextFieldState
 
   getLocation(String test) async {
     String apiURL =
-        "https://admin.e2store.net/api/map/autocomplete?search=$test";
+        "http://64.226.68.114:8070/api/map/autocomplete?search=$test";
 
     if (widget.countries != null) {
       for (int i = 0; i < widget.countries!.length; i++) {
@@ -257,7 +257,7 @@ class _GooglePlaceAutoCompleteTextFieldState
     //String key = GlobalConfiguration().getString('google_maps_key');
 
     var url =
-        "https://admin.e2store.net/api/map/placeDetails?placeid=${prediction.placeId}";
+        "http://64.226.68.114:8070/api/map/placeDetails?placeid=${prediction.placeId}";
     print("place iddd ${prediction.placeId}");
     try {
       Response response = await _dio.get(
