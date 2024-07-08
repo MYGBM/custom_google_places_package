@@ -1,5 +1,6 @@
 library google_places_flutter;
-//TODO:made changes
+
+//TODO:made changessss
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -145,8 +146,7 @@ class _GooglePlaceAutoCompleteTextFieldState
         throw response.data;
       }
 
-      PlacesAutocompleteResponse subscriptionResponse =
-          PlacesAutocompleteResponse.fromJson(response.data["data"]);
+      PlacesAutocompleteResponse subscriptionResponse = PlacesAutocompleteResponse.fromJson(response.data["data"]);
 
       if (test.length == 0) {
         alPredictions.clear();
@@ -202,10 +202,12 @@ class _GooglePlaceAutoCompleteTextFieldState
                 offset: Offset(0.0, size.height + 5.0),
                 child: Material(
                   child: Container(
-                    decoration: BoxDecoration(
-                      border: Border.all(color: Colors.grey, width: 0.6), // Add a border
-                      borderRadius: BorderRadius.circular(8.0), // Optional: rounded corners
-                    ),
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                            color: Colors.grey, width: 0.6), // Add a border
+                        borderRadius: BorderRadius.circular(
+                            8.0), // Optional: rounded corners
+                      ),
                       child: ListView.separated(
                         scrollDirection: Axis.vertical,
                         padding: EdgeInsets.zero,
@@ -257,7 +259,7 @@ class _GooglePlaceAutoCompleteTextFieldState
 
     var url =
         "http://64.226.68.114:8070/api/map/placeDetails?placeid=${prediction.placeId}";
-    print("place iddd ${prediction.placeId}");
+    // print("place iddd ${prediction.placeId}");
     try {
       Response response = await _dio.get(
         url,
@@ -273,10 +275,10 @@ class _GooglePlaceAutoCompleteTextFieldState
           PlaceDetails.fromJson(response.data["data"]);
       prediction.lat = placeDetails.result!.geometry!.location!.lat.toString();
       prediction.lng = placeDetails.result!.geometry!.location!.lng.toString();
-      print("latitude DETAILS${prediction.lat}");
-      print("longitude DETAILS${prediction.lng}");
-      print(
-          "printing widget.getPlaceDetailsWIthLatLng${widget.getPlaceDetailWithLatLng}");
+      // print("latitude DETAILS${prediction.lat}");
+      // print("longitude DETAILS${prediction.lng}");
+      // print(
+      //     "printing widget.getPlaceDetailsWIthLatLng${widget.getPlaceDetailWithLatLng}");
       widget.getPlaceDetailWithLatLng!(prediction);
     } catch (e) {
       var errorHandler = ErrorHandler.internal().handleError(e);
@@ -335,4 +337,3 @@ typedef GetPlaceDetailswWithLatLng = void Function(
 
 typedef ListItemBuilder = Widget Function(
     BuildContext context, int index, Prediction prediction);
-
