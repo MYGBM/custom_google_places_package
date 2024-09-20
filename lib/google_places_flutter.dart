@@ -1,7 +1,4 @@
 library google_places_flutter;
-//letʻs testii
-//test changes
-//testtt
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -117,8 +114,8 @@ class _GooglePlaceAutoCompleteTextFieldState
   }
 
   getLocation(String test) async {
-    String apiURL =
-        "http://64.226.68.114:8070/api/map/autocomplete?search=$test";
+    String apiURL = "https://sandbox.awrastore.com/api/map/autocomplete?search=$test";
+        //"http://64.226.68.114:8070/api/map/autocomplete?search=$test";
 
     if (widget.countries != null) {
       for (int i = 0; i < widget.countries!.length; i++) {
@@ -164,7 +161,7 @@ class _GooglePlaceAutoCompleteTextFieldState
 
       this._overlayEntry = null;
       this._overlayEntry = this._createOverlayEntry();
-      Overlay.of(context)!.insert(this._overlayEntry!);
+      Overlay.of(context).insert(this._overlayEntry!);
     } catch (e) {
       var errorHandler = ErrorHandler.internal().handleError(e);
       _showSnackBar("${errorHandler.message}");
@@ -259,7 +256,8 @@ class _GooglePlaceAutoCompleteTextFieldState
     //String key = GlobalConfiguration().getString('google_maps_key');
 
     var url =
-        "http://64.226.68.114:8070/api/map/placeDetails?placeid=${prediction.placeId}";
+      "https://sandbox.awrastore.com/api/map/placeDetails?placeid=${prediction.placeId}";
+        //"http://64.226.68.114:8070/api/map/placeDetails?placeid=${prediction.placeId}";
     print("place iddd ${prediction.placeId}");
     try {
       Response response = await _dio.get(
